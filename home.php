@@ -59,7 +59,7 @@
 				<table class="table table-striped table-hover table-bordered">
 					<thead>
 						<tr>
-							<th colspan="2">Win %</th>
+							<th colspan="2">Win Percentage</th>
 						</tr>
 					</thead>
 					<?php foreach ($winPercentages as $name=>$winPercentage) { ?>
@@ -71,9 +71,11 @@
 				</table>
 			</div>
 		</div>
+
 		<h3>Post Season</h3>
 		<h4>Quarterfinal Games</h4>
 		<div class="row">
+			<!-- Quarterfinal Games Played -->
 			<div class="col-md-3">
 				<table class="table table-striped table-hover table-bordered">
 					<thead>
@@ -85,6 +87,54 @@
 						<tr>
 							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $games ?></td>
+						</tr>
+					<?php } ?>
+				</table>
+			</div>
+			<!-- Quarterfinal Wins -->	
+			<div class="col-md-3">
+				<table class="table table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th colspan="2">Wins</th>
+						</tr>
+					</thead>
+					<?php foreach($qfWins as $name=>$qfwin) { ?>
+						<tr>
+							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><?php echo $qfwin ?></td>
+						</tr>
+					<?php } ?>
+				</table>
+			</div>
+			<!-- Quarterfinal Losses -->
+			<div class="col-md-3">
+				<table class="table table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th colspan="2">Losses</th>
+						</tr>
+					</thead>
+					<?php foreach($qfLosses as $name=>$qfloss) { ?>
+						<tr>
+							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><?php echo $qfloss ?></td>
+						</tr>
+					<?php } ?>
+				</table>
+			</div>
+			<!-- Quarterfinal Win Percentage-->
+			<div class="col-md-3">
+				<table class="table table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th colspan="2">Win Percentage</th>
+						</tr>
+					</thead>
+					<?php foreach($qfWinPercentages as $name=>$qfWinPercentage) { ?>
+						<tr>
+							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><?php echo number_format($qfWinPercentage, 3); ?></td>
 						</tr>
 					<?php } ?>
 				</table>

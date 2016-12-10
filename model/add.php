@@ -1,4 +1,5 @@
 <?php
+	include('../view/header.php');
 	require_once('database.php');
 	require_once('functions.php');
 
@@ -80,6 +81,9 @@
 			<option value="11">11</option>
 			<option value="12">12</option>
 			<option value="13">13</option>
+			<option value="14">14/QF</option>
+			<option value="15">15/SF</option>
+			<option value="16">16/Champ</option>
 		</select>
 		<br />
 		<label>Team 1</label>
