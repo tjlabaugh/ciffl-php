@@ -22,6 +22,19 @@
 		$statement1->closeCursor();
 	}
 
+	function getAllGames($managerDB) {
+		include('database.php');
+
+		$query = 'SELECT *
+					FROM ' . $managerDB;
+		$statement1 = $db->prepare($query);
+		$statement1->execute();
+		$games = $statement1->fetchAll();
+		$statement1->closeCursor();
+
+		return $games;
+	}
+
 	function getTeamWins($managerDB) {
 		include('database.php');
 
@@ -30,7 +43,7 @@
 					' WHERE win = true && game_type = "regular"';
 		$statement1 = $db->prepare($query);
 		$statement1->execute();
-		$arr = $statement1->fetch();
+		$arr = $statement1->fetchAll();
 		$wins = $arr['Wins'];
 		$statement1->closeCursor();
 
@@ -151,6 +164,75 @@
 		$query2 = 'SELECT COUNT(wk) AS "games"
 					FROM ' . $managerDB . '
 					WHERE game_type = "quarter"';
+		$statement2 = $db->prepare($query2);
+		$statement2->execute();
+		$arr = $statement2->fetch();
+		$games = $arr['games'];
+		$statement2->closeCursor();
+
+		return floatval($wins) / floatval($games);
+	}
+
+	function getTeamPostGamesPlayed($managerDB) {
+		include('database.php');
+
+		$query = 'SELECT COUNT(wk) AS "games"
+					FROM ' . $managerDB . '
+					WHERE game_type != "regular"';
+		$statement1 = $db->prepare($query);
+		$statement1->execute();
+		$arr = $statement1->fetch();
+		$output = $arr['games'];
+		$statement1->closeCursor();
+
+		return $output;
+	}
+
+	function getTeamPostWins($managerDB) {
+		include('database.php');
+
+		$query = 'SELECT COUNT(win) AS "Wins"
+					FROM ' . $managerDB .
+					' WHERE win = true && game_type != "regular"';
+		$statement1 = $db->prepare($query);
+		$statement1->execute();
+		$arr = $statement1->fetch();
+		$wins = $arr['Wins'];
+		$statement1->closeCursor();
+
+		return $wins;
+	}
+
+	function getTeamPostLosses($managerDB) {
+		include('database.php');
+
+		$query = 'SELECT COUNT(win) AS "losses"
+					FROM ' . $managerDB . '
+					WHERE win = false && game_type != "regular"';
+		$statement1 = $db->prepare($query);
+		$statement1->execute();
+		$arr = $statement1->fetch();
+		$output = $arr['losses'];
+		$statement1->closeCursor();
+
+		return $output;
+	}
+
+	function getPostWinPercentage($managerDB) {
+		include('database.php');
+
+		$query1 = 'SELECT COUNT(win) AS "wins"
+					FROM ' . $managerDB . '
+					WHERE win = true && game_type != "regular"';
+		$statement1 = $db->prepare($query1);
+		$statement1->execute();
+		$arr = $statement1->fetch();
+		$wins = $arr['wins'];
+		$statement1->closeCursor();
+
+		$query2 = 'SELECT COUNT(wk) AS "games"
+					FROM ' . $managerDB . '
+					WHERE game_type != "regular"';
 		$statement2 = $db->prepare($query2);
 		$statement2->execute();
 		$arr = $statement2->fetch();

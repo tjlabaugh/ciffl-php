@@ -36,6 +36,41 @@
 		}
 	}
 
+	function getManagerDatabaseByName($managerName) {
+		switch ($managerName) {
+			case 'Alex':
+				return "alexv_career";
+				break;
+			case 'Bill':
+				return "billg_career";
+				break;
+			case 'Craig':
+				return "craigp_career";
+				break;
+			case 'Dan':
+				return "dant_career";
+				break;
+			case 'Drew':
+				return "drewb_career";
+				break;
+			case 'Eric':
+				return "ericg_career";
+				break;
+			case 'John':
+				return "johno_career";
+				break;
+			case 'TJ':
+				return "tjl_career";
+				break;
+			case 'Mike':
+				return "mikea_career";
+				break;
+			case 'Matt':
+				return "mattk_career";
+				break;
+		}
+	}
+
 	// Return type of the game when given week. Ex: Week 3 = regular; Week 16 = championship
 	function getGameType($week) {
 		if ($week <= 13) {

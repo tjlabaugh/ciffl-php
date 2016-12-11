@@ -16,7 +16,7 @@
 					</thead>
 					<?php foreach ($gamesArray as $name=>$games) { ?>
 						<tr>
-							<td><a href="managers/<?php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $games ?></td>
 						</tr>
 					<?php } ?>
@@ -32,7 +32,7 @@
 					</thead>
 					<?php foreach ($winsArray as $name=>$wins) { ?>
 						<tr>
-							<td><a href="managers/<?php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $wins ?></td>
 						</tr>
 					<?php } ?>
@@ -48,7 +48,7 @@
 					</thead>
 					<?php foreach ($lossesArray as $name=>$loss) { ?>
 						<tr>
-							<td><a href="managers/<?php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $loss ?></td>
 						</tr>
 					<?php } ?>
@@ -64,7 +64,7 @@
 					</thead>
 					<?php foreach ($winPercentages as $name=>$winPercentage) { ?>
 						<tr>
-							<td><a href="managers/<?php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo number_format($winPercentage, 3) ?></td>
 						</tr>
 					<?php } ?>
@@ -85,7 +85,7 @@
 					</thead>
 					<?php foreach($qfGamesPlayed as $name=>$games) { ?>
 						<tr>
-							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $games ?></td>
 						</tr>
 					<?php } ?>
@@ -101,7 +101,7 @@
 					</thead>
 					<?php foreach($qfWins as $name=>$qfwin) { ?>
 						<tr>
-							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $qfwin ?></td>
 						</tr>
 					<?php } ?>
@@ -117,7 +117,7 @@
 					</thead>
 					<?php foreach($qfLosses as $name=>$qfloss) { ?>
 						<tr>
-							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo $qfloss ?></td>
 						</tr>
 					<?php } ?>
@@ -133,7 +133,7 @@
 					</thead>
 					<?php foreach($qfWinPercentages as $name=>$qfWinPercentage) { ?>
 						<tr>
-							<td><a href="managers/</php echo $name ?>"><?php echo $name ?></a></td>
+							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
 							<td><?php echo number_format($qfWinPercentage, 3); ?></td>
 						</tr>
 					<?php } ?>
