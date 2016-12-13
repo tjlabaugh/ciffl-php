@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +20,13 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		    	<ul class="nav navbar-nav navbar-right">
-		        	<li><a href="/view/login.php">Admin Login</a></li>
+		    		<?php if ($_SESSION['is_valid_admin'] == true) { ?>
+		    			<li><a href="/model/logout.php">Logout</a></li>
+		    		<?php } else { ?>
+		        		<li><a href="/view/login.php">Admin Login</a></li>
+		        	<?php } ?>
 		    	</ul>
 		   	</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+	<?php  echo $_SESSION['is_valid_admin']; ?>

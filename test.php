@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('model/database.php');
 
     // Get name for selected manager_id
@@ -48,6 +49,20 @@
         <?php foreach ($managers as $manager) {
             echo $manager['manager_id'] . " | " . $manager['manager_name'] . "<br>";
         } ?>
+    </div>
+    <div>
+        <h1>Session</h1>
+        <?php 
+            $_SESSION['testSession'] = "test";
+
+            echo "First:" . $_SESSION['testSession'];
+
+            unset($_SESSION['testSession']);
+
+            echo "Second:" . $_SESSION['testSession'];
+
+
+         ?>
     </div>
 </body>
 </html>

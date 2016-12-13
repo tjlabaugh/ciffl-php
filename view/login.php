@@ -1,9 +1,9 @@
 <?php
-	include('header.php'); 
+	include('header.php');
 ?>
 <div class="container">
 	<h1>Admin Login</h1>
-	<form class="form-horizontal" action="/model/admin.php" method="post">
+	<form class="form-horizontal" action="../model/admin.php" method="post">
 		<div class="form-group">
 			<label for="username" class="col-sm-1">Username</label>
 			<div class="col-sm-4">
