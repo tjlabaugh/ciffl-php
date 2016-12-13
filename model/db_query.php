@@ -43,7 +43,7 @@
 					' WHERE win = true && game_type = "regular"';
 		$statement1 = $db->prepare($query);
 		$statement1->execute();
-		$arr = $statement1->fetchAll();
+		$arr = $statement1->fetch();
 		$wins = $arr['Wins'];
 		$statement1->closeCursor();
 

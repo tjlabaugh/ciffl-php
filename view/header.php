@@ -29,4 +29,3 @@
 		   	</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-	<?php  echo $_SESSION['is_valid_admin']; ?>

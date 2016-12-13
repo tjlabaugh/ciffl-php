@@ -1,6 +1,13 @@
 <?php 
 	include('../view/header.php');
-	require_once('manager_data.php')
+	require_once('manager_data.php');
+
+	if ($_SESSION['is_valid_admin'] == true) {
+		$colspan = 8;
+	}
+	else {
+		$colspan = 7;
+	}
 ?>
 <div class="container">
 	<h1><?php echo $manager ?>'s Career Stats</h1>
@@ -52,7 +59,7 @@
 	<table class="table table-striped table-hover table-bordered">
 		<thead>
 			<tr>
-				<th colspan="7">All Games</th>
+				<th colspan="<?php echo $colspan; ?>">All Games</th>
 			</tr>
 			<tr>
 				<th>Season</th>
@@ -62,6 +69,9 @@
 				<th>Team Score</th>
 				<th>Opponent Score</th>
 				<th>Win/Loss</th>
+				<?php if ($_SESSION['is_valid_admin'] == true) { ?>
+				<th> </th>
+				<?php } ?>
 			</tr>
 		</thead>
 		<tbody>
@@ -74,6 +84,12 @@
 				<td><?php echo $game['team_score']; ?></td>
 				<td><?php echo $game['opp_score']; ?></td>
 				<td><?php echo $game['win']; ?></td>
+				<?php if ($_SESSION['is_valid_admin'] == true) { ?>
+				<td>
+					<button class="btn btn-warning">Edit</button>
+					<button class="btn btn-danger">Delete</button>
+				</td>
+				<?php } ?>
 			</tr>
 			<?php } ?>
 		</tbody>

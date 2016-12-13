@@ -1,5 +1,4 @@
 <?php 
-	include('db_query.php');
 	require_once('../model/functions.php');
 	require_once('../model/db_query.php');
 	require_once('manager.php');
