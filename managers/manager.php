@@ -1,6 +1,7 @@
 <?php 
 	include('../view/header.php');
 	require_once('manager_data.php');
+	require_once('../model/functions.php');
 
 	if ($_SESSION['is_valid_admin'] == true) {
 		$colspan = 8;
@@ -90,14 +91,14 @@
 				<td><?php echo $game['season']; ?></td>
 				<td><?php echo $game['wk']; ?></td>
 				<td><?php echo $game['game_type']; ?></td>
-				<td><?php echo $game['opponent']; ?></td>
+				<td><a href="?manager=<?php echo getManagerName($game['opponent']); ?>"><?php echo getManagerName($game['opponent']); ?></a></td>
 				<td><?php echo $game['team_score']; ?></td>
 				<td><?php echo $game['opp_score']; ?></td>
-				<td><?php echo $game['win']; ?></td>
+				<td><?php echo ($game['win']) ? "Win" : "Loss"; ?></td>
 				<?php if ($_SESSION['is_valid_admin'] == true) { ?>
 				<td>
-					<a href="edit?manager=<?php echo $getURL; ?>"><button class="btn btn-warning">Edit</button></a>
-					<a href="edit?delete=<?php echo $getURL; ?>"><button class="btn btn-danger">Delete</button></a>	
+					<a href="edit?<?php echo $getURL; ?>"><button class="btn btn-warning">Edit</button></a>
+					<a href="delete?<?php echo $getURL; ?>"><button class="btn btn-danger">Delete</button></a>	
 				</td>
 				<?php } ?>
 			</tr>

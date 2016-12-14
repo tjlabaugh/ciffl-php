@@ -36,6 +36,7 @@
 		}
 	}
 
+	// Returns database table given the manager name.
 	function getManagerDatabaseByName($managerName) {
 		switch ($managerName) {
 			case 'Alex':
@@ -71,6 +72,42 @@
 		}
 	}
 
+	// Returns the manager name given the teamID.
+	function getManagerName($teamID) {
+		switch ($teamID) {
+			case 1:
+				return "Alex";
+				break;
+			case 2:
+				return "Bill";
+				break;
+			case 3:
+				return "Craig";
+				break;
+			case 4:
+				return "Dan";
+				break;
+			case 5:
+				return "Drew";
+				break;
+			case 6:
+				return "Eric";
+				break;
+			case 7:
+				return "John";
+				break;
+			case 8:
+				return "TJ";
+				break;
+			case 9:
+				return "Mike";
+				break;
+			case 10:
+				return "Matt";
+				break;
+		}
+	}
+
 	// Return type of the game when given week. Ex: Week 3 = regular; Week 16 = championship
 	function getGameType($week) {
 		if ($week <= 13) {
@@ -84,6 +121,58 @@
 		}
 		if ($week == 16) {
 			return 'champ';
+		}
+	}
+
+	// Returns manager ID given manager name.
+	function getManagerID($managerName) {
+		switch ($managerName) {
+			case 'Alex':
+				return 1;
+				break;
+			case 'Bill':
+				return 2;
+				break;
+			case 'Craig':
+				return 3;
+				break;
+			case 'Dan':
+				return 4;
+				break;
+			case 'Drew':
+				return 5;
+				break;
+			case 'Eric':
+				return 6;
+				break;
+			case 'John':
+				return 7;
+				break;
+			case 'TJ':
+				return 8;
+				break;
+			case 'Mike':
+				return 9;
+				break;
+			case 'Matt':
+				return 10;
+				break;
+		}
+	}
+
+	// Return type of the game name when given week.
+	function getGameTypeName($week) {
+		if ($week == 14) {
+			return 'Quarterfinal';
+		}
+		else if ($week == 15) {
+			return 'Semifinal';
+		}
+		else if ($week == 16) {
+			return 'Championship';
+		}
+		else {
+			return "Week " . $week;
 		}
 	}
 
