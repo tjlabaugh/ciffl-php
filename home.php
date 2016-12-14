@@ -2,7 +2,7 @@
 <?php require_once('model/database.php'); ?>
 <?php require_once('model/home_data.php'); ?>
 <?php ?>
-	<div class="container">
+	<main>
 		<h1>CIFFL Database</h1>
 		<h3>Regular Season </h3>
 		<div class="row">
@@ -139,8 +139,8 @@
 					<?php } ?>
 				</table>
 			</div>
-		</div>		
-	</div>
+		</div>
+	</main>
 	
 
 

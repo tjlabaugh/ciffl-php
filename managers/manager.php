@@ -9,7 +9,7 @@
 		$colspan = 7;
 	}
 ?>
-<div class="container">
+<main>
 	<h1><?php echo $manager ?>'s Career Stats</h1>
 	<!-- Regular Season -->
 	<table class="table table-striped table-hover table-bordered">
@@ -75,7 +75,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($games as $row=>$game) { ?>
+			<?php foreach ($games as $row=>$game) {
+					$data = array('manager'=>$manager,
+								'season'=>$game['season'],
+								'week'=>$game['wk'],
+								'game_type'=>$game['game_type'],
+								'opponent'=>$game['opponent'],
+								'team_score'=>$game['team_score'],
+								'opp_score'=>$game['opp_score'],
+								'win'=>$game['win']);
+					$getURL = http_build_query($data);
+			?>
 			<tr>
 				<td><?php echo $game['season']; ?></td>
 				<td><?php echo $game['wk']; ?></td>
@@ -86,14 +96,14 @@
 				<td><?php echo $game['win']; ?></td>
 				<?php if ($_SESSION['is_valid_admin'] == true) { ?>
 				<td>
-					<button class="btn btn-warning">Edit</button>
-					<button class="btn btn-danger">Delete</button>
+					<a href="edit?manager=<?php echo $getURL; ?>"><button class="btn btn-warning">Edit</button></a>
+					<a href="edit?delete=<?php echo $getURL; ?>"><button class="btn btn-danger">Delete</button></a>	
 				</td>
 				<?php } ?>
 			</tr>
 			<?php } ?>
 		</tbody>
 	</table>
-</div>
+</main>
 
 <?php include('../view/footer.php'); ?>
