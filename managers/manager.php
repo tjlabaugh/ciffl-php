@@ -1,4 +1,5 @@
 <?php 
+	error_reporting(E_ERROR);
 	include('../view/header.php');
 	require_once('manager_data.php');
 	require_once('../model/functions.php');
@@ -52,7 +53,15 @@
 				<td><?php echo $postTeamGames; ?></td>
 				<td><?php echo $postTeamWins; ?></td>
 				<td><?php echo $postTeamLosses; ?></td>
-				<td><?php echo number_format($postTeamWinPercentage, 3); ?></td>
+				<td><?php
+						if (is_nan($postTeamWinPercentage)) {
+							echo 0.00;
+						}
+						else {
+							echo number_format($postTeamWinPercentage, 3);
+						}
+					?>
+				</td>
 			</tr>
 		</tbody>
 	</table>

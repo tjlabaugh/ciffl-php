@@ -1,23 +1,41 @@
 <?php
 	// Add game to database
-	function addGameToDB($managerDB, $year, $week, $game_type, $opponent, $teamScore, $oppTeamScore, $won) {
-		require_once('database.php');
-		require_once('add.php');
+	function addGameToDB($team1_DB, $team2_DB, $team1, $team2, $year, $week, $team1_score, $team2_score) {
+		include('../model/database.php');
+		require_once('../model/functions.php');
 
-		echo "Year: $year - Week: $week - Type: $game_type - Opp: $opponent - TeamScore: $teamScore - OppScore: $oppTeamScore, Won?: $won";
+		$team1Won = hasWon($team1_score, $team2_score);
+		$team2Won = hasWon($team2_score, $team1_score);
+		$givengame_type = getGameType($week);
 
-		$query = 'INSERT INTO ' . $managerDB .
+
+		$query1 = 'INSERT INTO ' . $team1_DB .
 						' (season, wk, game_type, opponent, team_score, opp_score, win)
 					VALUES
 						(:season, :wk, :game_type, :opponent, :team_score, :opp_score, :win)';
-		$statement1 = $db->prepare($query);
+		$statement1 = $db->prepare($query1);
 		$statement1->bindValue(':season', $year);
 		$statement1->bindValue(':wk', $week);
-		$statement1->bindValue(':game_type', $game_type);
-		$statement1->bindValue(':opponent', $opponent);
-		$statement1->bindValue(':team_score', $teamScore);
-		$statement1->bindValue(':opp_score', $oppTeamScore);
-		$statement1->bindValue(':win', $won);
+		$statement1->bindValue(':game_type', $givengame_type);
+		$statement1->bindValue(':opponent', $team2);
+		$statement1->bindValue(':team_score', $team1_score);
+		$statement1->bindValue(':opp_score', $team2_score);
+		$statement1->bindValue(':win', $team1Won);
+		$statement1->execute();
+		$statement1->closeCursor();
+
+		$query2 = 'INSERT INTO ' . $team2_DB .
+						' (season, wk, game_type, opponent, team_score, opp_score, win)
+					VALUES
+						(:season, :wk, :game_type, :opponent, :team_score, :opp_score, :win)';
+		$statement1 = $db->prepare($query2);
+		$statement1->bindValue(':season', $year);
+		$statement1->bindValue(':wk', $week);
+		$statement1->bindValue(':game_type', $givengame_type);
+		$statement1->bindValue(':opponent', $team1);
+		$statement1->bindValue(':team_score', $team2_score);
+		$statement1->bindValue(':opp_score', $team1_score);
+		$statement1->bindValue(':win', $team2Won);
 		$statement1->execute();
 		$statement1->closeCursor();
 	}

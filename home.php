@@ -1,3 +1,4 @@
+<?php error_reporting(E_ERROR); ?>
 <?php include('view/header.php'); ?>
 <?php require_once('model/database.php'); ?>
 <?php require_once('model/home_data.php'); ?>
@@ -134,7 +135,16 @@
 					<?php foreach($qfWinPercentages as $name=>$qfWinPercentage) { ?>
 						<tr>
 							<td><a href="managers?manager=<?php echo $name ?>"><?php echo $name ?></a></td>
-							<td><?php echo number_format($qfWinPercentage, 3); ?></td>
+							<td>
+								<?php 
+									if (is_nan($qfWinPercentage)) {
+										echo 0.000;
+									}
+									else {
+										echo number_format($qfWinPercentage, 3);
+									}
+								?>
+							</td>
 						</tr>
 					<?php } ?>
 				</table>
